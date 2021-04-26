@@ -3,7 +3,13 @@ version: "3.1"
 services:
    omada-controller:
      container_name: omada-controller
-     image: mbentley/omada-controller:4.2
+     image: mbentley/omada-controller:4.2-arm64
+     build:
+         context: .
+         dockerfile: Dockerfile.v4.2.x
+         args:
+             BASE: ubuntu:20.04
+             ARCH: arm64
      environment:
       - TZ=Etc/UTC
       - MANAGE_HTTP_PORT=8088
